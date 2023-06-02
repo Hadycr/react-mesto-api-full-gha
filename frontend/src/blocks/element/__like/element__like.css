@@ -1,0 +1,12 @@
+.element__like {
+  background-image: url(../../../img/like.svg);
+  height: 19px;
+  width: 22px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  box-sizing: border-box;
+  border: none;
+  background-color: #ffffff;
+  transition-duration: 3s;
+}

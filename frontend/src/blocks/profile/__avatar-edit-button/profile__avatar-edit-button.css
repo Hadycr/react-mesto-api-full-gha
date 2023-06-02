@@ -1,0 +1,27 @@
+.profile__avatar-edit-button {
+  border-radius: 50%;
+  height: 120px;
+  margin: 0;
+  -o-object-fit: cover;
+  object-fit: cover;
+  padding: 0;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.profile__avatar-edit-button:hover::before {
+  background-color: rgba(0,0,0,.8);
+  z-index: 1;
+  display: flex;
+  content: url('../../../img/Pop.png');
+  width: 120px;
+  height: 120px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+}
