@@ -29,7 +29,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 
 app.use(bodyParser.json());
 
-app.use(router);
+app.use('/mesto-api', router);
 
 app.use(errors());
 app.use(defaultError);
