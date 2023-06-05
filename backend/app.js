@@ -6,13 +6,13 @@ const helmet = require('helmet');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
-// const cors = require('cors');
+const cors = require('cors');
 const router = require('./routes/index');
 const defaultError = require('./errors/defaultError');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-// app.use(cors());
+app.use(cors());
 app.use(helmet());
 
 const limiter = rateLimit({
