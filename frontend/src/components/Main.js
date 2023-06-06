@@ -5,7 +5,7 @@ import Card from './Card';
 import {CurrentUserContext} from '../contexts/CurrentUserContext';
 import Header from './Header';
 
-function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete, cards, email}) {
+function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete, cards, email, isLogIn, onClick}) {
   const user = useContext(CurrentUserContext);
 
   return (
@@ -14,7 +14,9 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike,
         userStatus = 'Выйти'
         pathname = "/sign-in"
         email = {email}
-        />
+        isLogIn = {isLogIn}
+        onClick ={onClick}
+      />
     <main className="content">
       <section className="profile">
         <div className="profile__info">

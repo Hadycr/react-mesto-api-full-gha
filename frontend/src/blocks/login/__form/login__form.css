@@ -11,3 +11,10 @@
     max-height: 322px;    
   } 
 }
+
+@media screen and (max-width: 360px) {
+  .login__form {
+    max-width: 260px;
+    max-height: 260px;    
+  } 
+}

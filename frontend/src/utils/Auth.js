@@ -1,8 +1,7 @@
-export const BASE_URL = 'https://auth.nomoreparties.co/';
+export const BASE_URL = 'https://api.yakovleva.nomoredomains.rocks';
 
 function handleResponse(res) {
   if (res.ok) {
-    console.log(res);
     return res.json();
   }
   return Promise.reject(`Ошибка: ${res.status}`);
@@ -25,6 +24,7 @@ export const authorize = ({email, password}) => {
     body: JSON.stringify({ email, password })
 
   })
+
   .then(res => handleResponse(res))
 }
 
@@ -36,6 +36,5 @@ export const checkToken = (token) => {
       'Authorization': `Bearer ${token}`,
     }
   })
-  .then(res => res.json())
-  .then(data => data)
+  .then(res => handleResponse(res))
 }

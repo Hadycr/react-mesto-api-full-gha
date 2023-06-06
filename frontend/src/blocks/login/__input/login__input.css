@@ -8,5 +8,16 @@
   color: white;
   border: none;
   border-bottom: 1px solid white;
-  
+  outline:none;
+}
+@media screen and (max-width: 600px) {
+  .login__input {
+    width: 300px;
+  } 
+}
+
+@media screen and (max-width: 400px) {
+  .login__input {
+    width: 200px;
+  } 
 }

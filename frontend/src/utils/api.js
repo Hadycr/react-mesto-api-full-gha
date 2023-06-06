@@ -77,7 +77,7 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-60',
+  baseUrl: 'https://api.yakovleva.nomoredomains.rocks',
   headers: {
     authorization: '51242091-e279-4218-b97f-74ae7ffdb364',
     'Content-Type': 'application/json'
