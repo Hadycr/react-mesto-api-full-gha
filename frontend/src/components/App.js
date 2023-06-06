@@ -101,7 +101,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
@@ -120,7 +120,7 @@ function App() {
 
   function handleUpdateAvatar(newAvatar) {
     api.editAvatar(newAvatar)
-      .then((data) => {
+      .then((data) => {console.log(data);
         setСurrentUser(data);
         closeAllPopups()
       })
@@ -180,7 +180,7 @@ function App() {
         .then((data) => {
           if (data) {
             setIsLogIn(true);
-            setEmail(data.data.email);
+            setEmail(data.email);
             navigate('/');
           }
         })

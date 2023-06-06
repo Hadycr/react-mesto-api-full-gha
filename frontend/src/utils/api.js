@@ -12,64 +12,94 @@ class Api {
   }
 
   getUserInfo() {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/users/me`, {
-      headers: this.headers,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then(res => this._handleResponse(res))
   }
 
   getInitialCards() {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/cards`, {
-      headers: this.headers
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then(res => this._handleResponse(res))
   }
   
-  editUserInfo(data) {
+  editUserInfo({name, about}) {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/users/me`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
-        name: data.name,
-        about: data.about
+        name,
+        about
       })
     })
       .then(res => this._handleResponse(res))
   }
 
-  addCard(data) {
+  addCard({name, link}) {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/cards `, {
       method: 'POST',
-      headers: this.headers,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
-        name: data.name,
-        link: data.link
+        name,
+        link
       })
     })
       .then(res => this._handleResponse(res))
   }
 
   deleteCard(cardId) {
+    const token = localStorage.getItem('token');
     return fetch(`${this.url}/cards/${cardId}`, {
     method: 'DELETE',
-    headers: this.headers,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
     })
       .then(res => this._handleResponse(res))
   }
   changeLikeCardStatus(cardId, isLiked) {
+    const token = localStorage.getItem('token');
+
     return fetch(`${this.url}/cards/${cardId}/likes`, {
       method: isLiked ? 'DELETE' : 'PUT',
-      headers: this.headers,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
     })
       .then(res => this._handleResponse(res))
   }
 
-  editAvatar(data) {
+  editAvatar({avatar}) {
+    const token = localStorage.getItem('token');
+    console.log(token);
     return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this.headers,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
-        avatar: data.avatar,
+        avatar,
       })
     }) 
       .then(res => this._handleResponse(res))
@@ -79,7 +109,7 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://api.yakovleva.nomoredomains.rocks',
   headers: {
-    authorization: '51242091-e279-4218-b97f-74ae7ffdb364',
-    'Content-Type': 'application/json'
+    // authorization: '51242091-e279-4218-b97f-74ae7ffdb364',
+    Accept: "application/json",
   }
 })
