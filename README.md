@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP: 84.201.132.53
 
+IP 84.201.132.53
 Frontend https://yakovleva.nomoredomains.rocks
 
 Backend https://api.yakovleva.nomoredomains.rocks
