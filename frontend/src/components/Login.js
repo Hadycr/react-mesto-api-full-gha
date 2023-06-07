@@ -22,7 +22,7 @@ function Login({handleLogin}) {
     <>
     <Header 
       userStatus = "Регистрация"
-      pathname = "/sign-up"
+      pathname = "/signup"
     />
     <div className="login">
       <div className='login__container'>

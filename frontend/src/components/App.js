@@ -146,7 +146,7 @@ function App() {
         if(data !== undefined) {
           setInfoTooltipImage(successImg);
           setPopupTitle("Вы успешно зарегистрировались!")
-          navigate('/sign-in', {replace: true})
+          navigate('/signin', {replace: true})
         }
       })
       .catch(() => {
@@ -200,9 +200,9 @@ function App() {
       <div className="page__container">
         <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/sign-up" element={<Register 
+          <Route path="/signup" element={<Register 
             handleRegistration = {handleRegistration}/>}/>
-          <Route path="/sign-in" element={<Login 
+          <Route path="/signin" element={<Login 
             handleLogin={handleLogin} />}/>
           <Route path="/" element={<ProtectedRoute 
             loggedIn = {isLogIn}

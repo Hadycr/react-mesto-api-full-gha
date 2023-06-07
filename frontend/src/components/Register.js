@@ -23,7 +23,7 @@ function Register({handleRegistration}) {
     <>
     <Header
       userStatus = 'Войти'
-      pathname = "/sign-in"
+      pathname = "/signin"
     />
     <div className="login">  
       <div className='login__container'>
@@ -36,7 +36,7 @@ function Register({handleRegistration}) {
           <button type="submit" className="login__link button">Зарегистрироваться</button>
           <div className="login__info">
             <p>Уже зарегистрированы?</p>
-            <Link to="/sign-in" className="login__info">Войти</Link>
+            <Link to="/signin" className="login__info">Войти</Link>
           </div>
         </form>
       </div>  

@@ -12,7 +12,7 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike,
     <>
       <Header 
         userStatus = 'Выйти'
-        pathname = "/sign-in"
+        pathname = "/signin"
         email = {email}
         isLogIn = {isLogIn}
         onClick ={onClick}
