@@ -91,7 +91,6 @@ class Api {
 
   editAvatar({avatar}) {
     const token = localStorage.getItem('token');
-    console.log(token);
     return fetch(`${this.url}/users/me/avatar`, {
       method: 'PATCH',
       headers: {

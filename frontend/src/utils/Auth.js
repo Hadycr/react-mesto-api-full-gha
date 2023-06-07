@@ -28,8 +28,9 @@ export const authorize = ({email, password}) => {
   .then(res => handleResponse(res))
 }
 
-export const checkToken = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
+export const checkToken = () => {
+  const token = localStorage.getItem('token');
+  return fetch(`${BASE_URL}/users/me`, {   
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
