@@ -1,6 +1,7 @@
 {
   "name": "express-mesto-gha",
   "author": "hadycr",
+  "main": "app.js",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
