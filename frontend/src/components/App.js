@@ -38,20 +38,24 @@ function App() {
   const navigate = useNavigate();
   
   useEffect(() => {
+    if(isLogIn) {
     api.getUserInfo()
       .then((res) => {
         setСurrentUser(res);
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
-  }, []);
+    };
+  }, [isLogIn]);
 
   useEffect(() => {
-    api.getInitialCards()
-      .then((res) => {
-        setCards(res);
-      })
-      .catch((err) => console.log(`Ошибка: ${err}`));
-  }, []);
+    if(isLogIn) {
+      api.getInitialCards()
+        .then((res) => {
+          setCards(res); 
+      }) 
+        .catch((err) => console.log(`Ошибка: ${err}`));
+    };
+  }, [isLogIn]);
 
   useEffect(() => {
     function closeByEscape(evt) {
@@ -104,7 +108,7 @@ function App() {
     const isLiked = card.likes.some((id) => id === currentUser._id);
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        setCards((state) => state.map((c) => c._id === card._id ? newCard.card : c));
       })
       .catch((err) => console.log(`Ошибка: ${err}`));
   }

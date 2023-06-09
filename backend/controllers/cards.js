@@ -16,17 +16,27 @@ module.exports.createCard = (req, res, next) => {
   const owner = req.user._id;
   Card.create({ name, link, owner })
     .then((card) => res.status(STATUS_CREATED_201).send(card))
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new BadRequestError('Переданы некорректные данные при создании карточки'));
+      } else {
+        next(err);
+      }
+  });
 };
 
 module.exports.deleteCard = (req, res, next) => {
-  Card.findByIdAndRemove(req.params.cardId)
-    .orFail(new NotFoundError('Данные не найдены'))
+  Card.findById(req.params.cardId)
     .then((card) => {
+      if (!card) {
+        throw new NotFoundError('Данные не найдены');
+      }
       if (card.owner.toString() !== req.user._id) {
         throw new ForbiddenError('Вы не можете удалить карточку другого пользователя');
       }
-      res.send(card);
+      card.deleteOne()
+        .then(() => res.send(card))
+        .catch(next);
     })
     .catch((err) => {
       if (err.name === 'CastError') {

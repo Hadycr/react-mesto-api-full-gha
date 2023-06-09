@@ -48,9 +48,11 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       if (err.code === 11000) {
         next(new ConflictError('Такой пользователь уже существует'));
-      } else {
-        next(err);
       }
+      if (err.name === 'ValidationError') {
+        next(new BadRequestError('Переданы некорректные данные при создании карточки'));
+      }
+      return next(err);
     });
 };
 
@@ -62,7 +64,7 @@ module.exports.updateUser = (req, res, next) => {
     })
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new BadRequestError('Данные не корректны'));
       } else {
         next(err);
@@ -78,7 +80,7 @@ module.exports.updateAvatar = (req, res, next) => {
     })
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new BadRequestError('Данные не корректны'));
       } else {
         next(err);

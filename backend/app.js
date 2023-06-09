@@ -23,7 +23,6 @@ const limiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
 });
-app.use(limiter);
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
   enableUtf8Validation: false,
@@ -31,6 +30,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 
 app.use(bodyParser.json());
 app.use(requestLogger);
+app.use(limiter);
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
