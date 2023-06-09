@@ -26,7 +26,7 @@ router.post('/signin', celebrate({
 router.use(auth);
 router.use('/users/', userRouter);
 router.use('/cards/', cardRouter);
-router.use('/*', (req, res) => {
+router.use('/*', (req, res, next) => {
   next(new NotFoundError('404 not found'));
 });
 module.exports = router;
